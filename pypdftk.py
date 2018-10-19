@@ -81,7 +81,6 @@ def fill_form(pdf_path, datas={}, out_file=None, flatten=True):
     finally:
         if handle:
             os.close(handle)
-    os.close(tmp_fdf)
     os.remove(tmp_fdf)
     return out_file
 
@@ -157,6 +156,7 @@ def gen_xfdf(datas={}):
     f = open(out_file, 'wb')
     f.write((tpl.encode('UTF-8')))
     f.close()
+    os.close(handle)
     return out_file
 
 def replace_page(pdf_path, page_number, pdf_to_insert_path):
