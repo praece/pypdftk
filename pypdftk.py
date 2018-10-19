@@ -81,6 +81,7 @@ def fill_form(pdf_path, datas={}, out_file=None, flatten=True):
     finally:
         if handle:
             os.close(handle)
+    os.close(tmp_fdf)
     os.remove(tmp_fdf)
     return out_file
 
